@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# create virutalenv
+# create virtualenv
 virtualenv .env
 
 # activate virtualenv
