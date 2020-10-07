@@ -25,31 +25,20 @@ def compute_route(route_request: RouteRequest):
 @app.route('/route', methods=['POST'])
 @as_json
 def compute_route_default():
-    route_request = RouteRequest('ors', 'driving-car', request.json['coordinates'])
+    route_request = RouteRequest('ors', 'driving-car', request.json['points'])
     return json_response(route=compute_route(route_request).serialize())
 
 @app.route('/route/<mode>', methods=['POST'])
 @as_json
 def compute_route_mode(mode: str):
-    route_request = RouteRequest('ors', mode, request.json['coordinates'])
+    route_request = RouteRequest('ors', mode, request.json['points'])
     return json_response(route=compute_route(route_request).serialize())
 
 @app.route('/route/<mode>/<service>', methods=['POST'])
 @as_json
 def compute_route_full(mode: str, service: str):
-    route_request = RouteRequest(service, mode, request.json['coordinates'])
+    route_request = RouteRequest(service, mode, request.json['points'])
     return json_response(route=compute_route(route_request).serialize())
-
-@app.route('/test/point')
-@as_json
-def create_point():
-    return json_response(point=Point(4.3, 3.4).serialize())
-
-@app.route('/test/route')
-@as_json
-def create_route():
-    route = Route(666, 420, [Point(i * 0.5, i * 1.5) for i in range(10)])
-    return json_response(route=route.serialize())
 
 if __name__ == '__main__':
     app.run()

@@ -22,3 +22,10 @@ Don't forget to run `pip freeze > requirements.txt` after adding some pip depend
 Build docker image with `docker build -t multipoints-route-back:latest .`
 
 Build and run docker-compose setup with `docker-compose up --build`. This will run flask server with uwsgi exposed on port 9666
+
+### Test
+
+Following command can be used to test:
+```
+curl -H "Content-Type: application/json" -X POST -d '{"points": [[2.37113,48.88503],[2.37941,48.88837],[2.37123,48.88379]]}' http://localhost:5000/route/foot
+```
