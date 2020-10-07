@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+
+  flask:
+    build: .
+    container_name: multipoints-route-flask
+    restart: always
+    environment:
+      - APP_NAME=MultiPointsRouteAPI
+    expose:
+      - 9666
+
+  nginx:
+    build: ./nginx
+    container_name: multipoints-route-nginx
+    restart: always
+    ports:
+      - 5050:80

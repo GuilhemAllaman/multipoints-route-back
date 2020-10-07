@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request
 from flask_json import FlaskJSON, as_json, jsonify, json_response
 from geo.models import Point, Route
@@ -12,7 +13,10 @@ route_service_factory = RouteServiceFactory()
 
 @app.route('/')
 def hello_world():
-    return 'Multiple points routing API'
+    app_name = os.getenv("APP_NAME")
+    if app_name:
+        return 'Hello from {}!'.format(app_name)
+    return 'Hello from Multiple Points Route API!'
 
 @app.route('/route', methods=['POST'])
 @as_json
