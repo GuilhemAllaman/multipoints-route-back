@@ -25,7 +25,9 @@ Build and run docker-compose setup with `docker-compose up --build`. This will r
 
 ### Test
 
-Following command can be used to test:
+Following commands can be used to test:
 ```
-curl -H "Content-Type: application/json" -X POST -d '{"points": [[2.37113,48.88503],[2.37941,48.88837],[2.37123,48.88379]]}' http://localhost:5000/route/foot
+curl -H "Content-Type: application/json" -X POST -d '{"points": [[2.37113,48.88503],[2.37941,48.88837],[2.37123,48.88379]]}' http://localhost:5000/route/cycling
+curl -H "Content-Type: application/json" -X POST -d '{"points": [[2.37113,48.88503],[2.37941,48.88837],[2.37123,48.88379]]}' https://mpr.guilhemallaman.net/route/cycling
+
 ```

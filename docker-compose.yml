@@ -9,4 +9,4 @@ services:
     environment:
       - APP_NAME=MultiPointsRouteAPI
     ports:
-      - 9666:9666
+      - 127.0.0.1:9666:9666

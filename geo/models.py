@@ -1,7 +1,7 @@
 class Point:
 
-    x = float
-    y = float
+    x: float
+    y: float
 
     def __init__(self, x: float, y: float):
         self.x = x

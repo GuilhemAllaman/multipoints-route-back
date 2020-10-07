@@ -19,7 +19,9 @@ class RouteService:
 class OrsService(RouteService):
 
     tokens_counter = 0
-    tokens = ['5b3ce3597851110001cf6248825666083b1e45f79ea80b6d26f8b0a2']
+    tokens = [
+        '5b3ce3597851110001cf6248825666083b1e45f79ea80b6d26f8b0a2'
+    ]
 
     transport_mode_switcher = {
         'car': 'driving-car',
