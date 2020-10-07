@@ -8,7 +8,7 @@ API written in python using Flask
 
 Run `setup.sh` script via command `sh setup.sh` or `./setup.sh`, to create virtual env and download pip dependencies
 
-Set following variables :
+Set following variables in dev environment:
 ```
 export FLASK_APP=app.py
 export FLASK_ENV=development # to enable dev environment 

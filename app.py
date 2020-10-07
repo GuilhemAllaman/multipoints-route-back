@@ -18,15 +18,27 @@ def hello_world():
         return 'Hello from {}!'.format(app_name)
     return 'Hello from Multiple Points Route API!'
 
+def compute_route(route_request: RouteRequest):
+    service = route_service_factory.service(route_request)
+    return service.compute_route(route_request)
+
 @app.route('/route', methods=['POST'])
 @as_json
-def compute_route():
-    payload = request.json
-    route_request = RouteRequest(payload['service'], payload['mode'], payload['coordinates'])
-    service = route_service_factory.service(route_request)
-    route = service.compute_route(route_request)
-    return json_response(route=route.serialize())
+def compute_route_default():
+    route_request = RouteRequest('ors', 'driving-car', request.json['coordinates'])
+    return json_response(route=compute_route(route_request).serialize())
 
+@app.route('/route/<mode>', methods=['POST'])
+@as_json
+def compute_route_mode(mode: str):
+    route_request = RouteRequest('ors', mode, request.json['coordinates'])
+    return json_response(route=compute_route(route_request).serialize())
+
+@app.route('/route/<mode>/<service>', methods=['POST'])
+@as_json
+def compute_route_full(mode: str, service: str):
+    route_request = RouteRequest(service, mode, request.json['coordinates'])
+    return json_response(route=compute_route(route_request).serialize())
 
 @app.route('/test/point')
 @as_json
