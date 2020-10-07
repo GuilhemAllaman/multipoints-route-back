@@ -22,7 +22,7 @@ class OrsService(RouteService):
             'Accept-Encoding': 'gzip, deflate, br',
             'Authorization': self.key_manager.token('ors'),
             'Content-Type': 'application/json',
-            'User-Agent': 'Mozilla'
+            'User-Agent': 'MPR'
         }
         payload = {'coordinates': [[p.x, p.y] for p in route_request.points]}
         req = requests.post(url, headers=headers, json=payload)
