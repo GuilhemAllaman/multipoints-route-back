@@ -21,6 +21,4 @@ Don't forget to run `pip freeze > requirements.txt` after adding some pip depend
 
 Build docker image with `docker build -t multipoints-route-back:latest .`
 
-Build and run docker-compose setup with `docker-compose up --build`, following instructions on [this site](https://pythonise.com/series/learning-flask/building-a-flask-app-with-docker-compose)
-
-Setup uses a nginx container with uwsgi pass (through flask port that is currently 9666, see nginx/nginx.conf). Flask's docker image also uses uwsgi to start up python flask app
+Build and run docker-compose setup with `docker-compose up --build`. This will run flask server with uwsgi exposed on port 9666

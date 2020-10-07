@@ -13,7 +13,7 @@ route_service_factory = RouteServiceFactory()
 
 @app.route('/')
 def hello_world():
-    app_name = os.getenv("APP_NAME")
+    app_name = os.getenv('APP_NAME')
     if app_name:
         return 'Hello from {}!'.format(app_name)
     return 'Hello from Multiple Points Route API!'
