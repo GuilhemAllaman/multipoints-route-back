@@ -40,6 +40,8 @@ class OrsService(RouteService):
         return token
 
     def format_transport_mode(self, req_mode: str) -> str:
+        if not req_mode in self.transport_mode_switcher:
+            raise ValueError('Unknown transport mode <{}>'.format(req_mode))
         return self.transport_mode_switcher.get(req_mode)
 
     def compute_route(self, route_request: RouteRequest) -> Route:
@@ -74,4 +76,6 @@ class RouteServiceFactory:
     }
 
     def service(self, route_request: RouteRequest) -> RouteService:
+        if not route_request.service in self.services:
+            raise ValueError('Unknown service <{}>'.format(route_request.service))
         return self.services.get(route_request.service)
