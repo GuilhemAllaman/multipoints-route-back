@@ -2,7 +2,7 @@ from abc import abstractmethod
 
 import requests
 
-from geo.models import Point, Route
+from geo.models import Point, Segment, Route
 from web.http import RouteRequest
 
 
@@ -59,7 +59,13 @@ class OrsService(RouteService):
         duration = feature['properties']['summary']['duration']
         points = [Point(p[0], p[1]) for p in feature['geometry']['coordinates']]
 
-        return Route(distance, duration, points)
+        segments = []
+        for segment in feature['properties']['segments']:
+            print(segment)
+            for step in segment['steps']:
+                segments.append(Segment(step['distance'], step['duration'], step['instruction'], step['name'], [points[i] for i in step['way_points']]))
+
+        return Route(distance, duration, segments)
 
 class RouteServiceFactory:
 
