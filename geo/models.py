@@ -27,9 +27,9 @@ class Segment:
 
     def serialize(self) -> dict:
         return {
-            'distance': self.distance,
-            'duration': self.duration,
-            'instruction': self.instruction,
+            'dist': self.distance,
+            'time': self.duration,
+            'instr': self.instruction,
             'name': self.name,
             'points': [p.serialize() for p in self.points]
         }
