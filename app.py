@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, request
 from flask_json import FlaskJSON, as_json, json_response
+from flask_cors import CORS
 
 from web.http import RouteRequest
 from web.route_service import RouteServiceFactory
@@ -9,6 +10,7 @@ from web.route_service import RouteServiceFactory
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 json = FlaskJSON(app)
+cors = CORS(app)
 route_service_factory = RouteServiceFactory()
 
 
