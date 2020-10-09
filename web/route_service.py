@@ -63,7 +63,6 @@ class OrsService(RouteService):
 
         segments = []
         for segment in feature['properties']['segments']:
-            print(segment)
             for step in segment['steps']:
                 segments.append(Segment(step['distance'], step['duration'], step['instruction'], step['name'], [points[i] for i in step['way_points']]))
 
